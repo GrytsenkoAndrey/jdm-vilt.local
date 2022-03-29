@@ -45,7 +45,7 @@
                     <Skill :background="skill.color">{{ skill.name }}</Skill>
                 </div>
             </div>
-            
+
             <div class="flex justify-center mt-10">
                 <jet-button class="bg-indigo-400 rounded font-bold text-sm text-gray-200 hover:bg-indigo-700">Get in touch</jet-button>
             </div>
@@ -58,7 +58,11 @@
         </Section>
         <Section class="flex justify-between bg-gray-800 text-gray-300 text-xl">
             <p>&copy; APG All rights reserved</p>
-            <div class="flex justify-evenly items-center">Github Twitter Linkedin</div>
+            <div class="flex justify-evenly items-center">
+                <Link class="border-b px-2 pb-1 hover:text-gray-50" href="#">Github</Link>
+                <Link class="border-b px-2 pb-1 hover:text-gray-50" href="#">Twitter</Link>
+                <Link class="border-b px-2 pb-1 hover:text-gray-50" href="#">Linkedin</Link>
+            </div>
         </Section>
     </div>
 </template>
