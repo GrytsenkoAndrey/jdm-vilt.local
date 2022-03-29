@@ -52,6 +52,13 @@
         </Section>
         <Section class="bg-gray-600 text-gray-200 h-screen">
             <h2 class="text-6xl font-bold pt-3">Projects</h2>
+
+            <div v-for="project in projects">
+                <Project :title="project.title" :description="project.description" :color="project.color">
+                    <BeakerIcon></BeakerIcon>
+                </Project>
+            </div>
+
             <div class="flex justify-center mt-10">
                 <jet-button class="bg-purple-100 rounded font-bold text-sm text-gray-800 hover:bg-purple-200">Know more</jet-button>
             </div>
@@ -73,9 +80,12 @@ import {Head, Link} from '@inertiajs/inertia-vue3';
 
 import JetApplicationMark from '@/Jetstream/ApplicationMark';
 import JetButton from '@/Jetstream/Button';
-
 import Section from '@/Components/Section';
+
 import Skill from '@/Components/Skills';
+import Project from '@/Components/Project';
+
+import {BeakerIcon} from '@heroicons/vue/solid';
 
 export default defineComponent({
     components: {
@@ -84,13 +94,16 @@ export default defineComponent({
         JetApplicationMark,
         Section,
         JetButton,
-        Skill
+        Skill,
+        Project,
+        BeakerIcon
     },
 
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        skills: Object
+        skills: Object,
+        projects: Object
     }
 })
 </script>
