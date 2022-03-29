@@ -2,6 +2,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/js/node_modules_heroicons_*.js
 /storage/*.key
 /vendor
 .env
