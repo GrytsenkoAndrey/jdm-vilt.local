@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,14 @@ class ProjectFactory extends Factory
      */
     public function definition()
     {
+        $color = $this->faker->randomElement(Project::getAvailableTextColors());
+        $icon = $this->faker->randomElement(Project::getAvailableIcons());
+
         return [
-            //
+            'title' => ucfirst($this->faker->unique()->word()),
+            'description' => $this->faker->sentence(3),
+            'color' => $color,
+            'icon_name' => $icon
         ];
     }
 }
