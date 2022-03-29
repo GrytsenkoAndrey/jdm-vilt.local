@@ -27,13 +27,27 @@
             <div class="h-2/3 flex flex-wrap content-between pb-36">
                 <p class="border-b-2 font-bold border-gray-400 pb-3 text-2xl text-gray-300 uppercase">Hey! This is
                     Andrey. I'm PHP developer and I would be glad to work with you.</p>
+
+                <div class="flex items-end border-b-2 border-gray-500 pb-2">
+                    <p class="font-bold mr-5 text-gray-500 text-xl">Want to know more?</p>
+                    <jet-button class="bg-green-400 rounded font-bold text-sm text-gray-800 hover:bg-green-800">Let's chat</jet-button>
+                </div>
+            </div>
+            <div class="animate-pulse mt-3 text-gray-300 text-center text-9xl">
+                <a href="#skills">&#8675;</a>
             </div>
         </Section>
-        <Section class="bg-gray-200 text-gray-800 h-screen">
+        <Section class="bg-gray-200 text-gray-800 h-screen" id="skills">
             <h2 class="text-6xl font-bold pt-3">Skills</h2>
+            <div class="flex justify-center mt-10">
+                <jet-button class="bg-indigo-400 rounded font-bold text-sm text-gray-200 hover:bg-indigo-700">Get in touch</jet-button>
+            </div>
         </Section>
         <Section class="bg-gray-600 text-gray-200 h-screen">
             <h2 class="text-6xl font-bold pt-3">Projects</h2>
+            <div class="flex justify-center mt-10">
+                <jet-button class="bg-purple-100 rounded font-bold text-sm text-gray-800 hover:bg-purple-200">Know more</jet-button>
+            </div>
         </Section>
         <Section class="flex justify-between bg-gray-800 text-gray-300 text-xl">
             <p>&copy; APG All rights reserved</p>
@@ -45,7 +59,10 @@
 <script>
 import {defineComponent} from 'vue'
 import {Head, Link} from '@inertiajs/inertia-vue3';
+
 import JetApplicationMark from '@/Jetstream/ApplicationMark';
+import JetButton from '@/Jetstream/Button';
+
 import Section from '@/Components/Section';
 
 export default defineComponent({
@@ -53,7 +70,8 @@ export default defineComponent({
         Head,
         Link,
         JetApplicationMark,
-        Section
+        Section,
+        JetButton
     },
 
     props: {
