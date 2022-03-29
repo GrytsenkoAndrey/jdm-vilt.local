@@ -23637,9 +23637,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ApplicationMark */ "./resources/js/Jetstream/ApplicationMark.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
-/* harmony import */ var _Components_Section__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Section */ "./resources/js/Components/Section.vue");
-/* harmony import */ var _Components_Skills__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Skills */ "./resources/js/Components/Skills.vue");
-/* harmony import */ var _Components_Project__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Project */ "./resources/js/Components/Project.vue");
+/* harmony import */ var _Jetstream_Modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Modal */ "./resources/js/Jetstream/Modal.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Components_Section__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Section */ "./resources/js/Components/Section.vue");
+/* harmony import */ var _Components_Skills__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Components/Skills */ "./resources/js/Components/Skills.vue");
+/* harmony import */ var _Components_Project__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Components/Project */ "./resources/js/Components/Project.vue");
+
+
 
 
 
@@ -23652,10 +23656,12 @@ __webpack_require__.r(__webpack_exports__);
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link,
     JetApplicationMark: _Jetstream_ApplicationMark__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Section: _Components_Section__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Section: _Components_Section__WEBPACK_IMPORTED_MODULE_6__["default"],
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Skill: _Components_Skills__WEBPACK_IMPORTED_MODULE_5__["default"],
-    Project: _Components_Project__WEBPACK_IMPORTED_MODULE_6__["default"]
+    JetModal: _Jetstream_Modal__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Skill: _Components_Skills__WEBPACK_IMPORTED_MODULE_7__["default"],
+    Project: _Components_Project__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   props: {
     canLogin: Boolean,
@@ -23671,6 +23677,16 @@ __webpack_require__.r(__webpack_exports__);
         return __webpack_require__("./node_modules/@heroicons/vue/solid lazy recursive ^\\.\\/.*Icon\\.js$")("./" + _this.projects[index].icon_name + "Icon.js");
       });
     }
+  },
+  data: function data() {
+    return {
+      contacting: null,
+      form: {
+        email: null,
+        message: null,
+        processing: false
+      }
+    };
   }
 }));
 
@@ -28243,6 +28259,19 @@ var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Linkedin");
 
+var _hoisted_23 = {
+  "class": "bg-gray-50 shadow-2xl p-8"
+};
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-gray-600 text-2xl font-extrabold text-center"
+}, "Let me know some details", -1
+/* HOISTED */
+);
+
+var _hoisted_25 = {
+  "class": "animate-spin mr-1"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -28257,6 +28286,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Skill = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Skill");
 
   var _component_Project = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Project");
+
+  var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
+
+  var _component_jet_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-modal");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Welcome"
@@ -28318,6 +28351,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+        onClick: _cache[0] || (_cache[0] = function ($event) {
+          return _ctx.contacting = true;
+        }),
         "class": "bg-green-400 rounded font-bold text-sm text-gray-800 hover:bg-green-800"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -28354,6 +28390,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 256
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+        onClick: _cache[1] || (_cache[1] = function ($event) {
+          return _ctx.contacting = true;
+        }),
         "class": "bg-indigo-400 rounded font-bold text-sm text-gray-200 hover:bg-indigo-700"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -28389,6 +28428,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 256
       /* UNKEYED_FRAGMENT */
       )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+        onClick: _cache[2] || (_cache[2] = function ($event) {
+          return _ctx.contacting = true;
+        }),
         "class": "bg-purple-100 rounded font-bold text-sm text-gray-800 hover:bg-purple-200"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -28441,7 +28483,65 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])], 64
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_modal, {
+    show: _ctx.contacting,
+    closeable: "true",
+    onClose: _cache[6] || (_cache[6] = function ($event) {
+      return _ctx.contacting = null;
+    })
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+        "class": "flex flex-col items-center p-16",
+        onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+          return _ctx.submit && _ctx.submit.apply(_ctx, arguments);
+        }, ["prevent"]))
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        "class": "px-5 py-3 w-96 border border-gray-600 rounded",
+        type: "email",
+        name: "email",
+        placeholder: "Your email",
+        modelValue: _ctx.form.email,
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return _ctx.form.email = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    <jet-input-error :message=\"form.errors.email\"/>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+        "class": "px-5 py-3 w-96 border border-gray-600 rounded mt-5",
+        name: "message",
+        placeholder: "The details :)",
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+          return _ctx.form.message = $event;
+        })
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.message]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                    <jet-input-error :message=\"form.errors.message\"/>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+        "class": "px-5 py-3 mt-5 w-96 bg-purple-400 justify-center rounded-xl text-sm",
+        disabled: _ctx.form.processing
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_25, " ◠ ", 512
+          /* NEED_PATCH */
+          ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.form.processing]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, " Get in touch ", 512
+          /* NEED_PATCH */
+          ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !_ctx.form.processing]])];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["disabled"])], 32
+      /* HYDRATE_EVENTS */
+      )])];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show"])])], 64
   /* STABLE_FRAGMENT */
   );
 }

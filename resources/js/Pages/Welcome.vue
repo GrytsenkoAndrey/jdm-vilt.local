@@ -30,7 +30,9 @@
 
                 <div class="flex items-end border-b-2 border-gray-500 pb-2">
                     <p class="font-bold mr-5 text-gray-500 text-xl">Want to know more?</p>
-                    <jet-button class="bg-green-400 rounded font-bold text-sm text-gray-800 hover:bg-green-800">Let's chat</jet-button>
+                    <jet-button
+                        @click="contacting=true"
+                        class="bg-green-400 rounded font-bold text-sm text-gray-800 hover:bg-green-800">Let's chat</jet-button>
                 </div>
             </div>
             <div class="animate-pulse mt-3 text-gray-300 text-center text-9xl">
@@ -47,7 +49,9 @@
             </div>
 
             <div class="flex justify-center mt-10">
-                <jet-button class="bg-indigo-400 rounded font-bold text-sm text-gray-200 hover:bg-indigo-700">Get in touch</jet-button>
+                <jet-button
+                    @click="contacting=true"
+                    class="bg-indigo-400 rounded font-bold text-sm text-gray-200 hover:bg-indigo-700">Get in touch</jet-button>
             </div>
         </Section>
         <Section class="bg-gray-600 text-gray-200 h-screen">
@@ -60,7 +64,9 @@
             </div>
 
             <div class="flex justify-center mt-10">
-                <jet-button class="bg-purple-100 rounded font-bold text-sm text-gray-800 hover:bg-purple-200">Know more</jet-button>
+                <jet-button
+                    @click="contacting=true"
+                    class="bg-purple-100 rounded font-bold text-sm text-gray-800 hover:bg-purple-200">Know more</jet-button>
             </div>
         </Section>
         <Section class="flex justify-between bg-gray-800 text-gray-300 text-xl">
@@ -71,6 +77,58 @@
                 <Link class="border-b px-2 pb-1 hover:text-gray-50" href="#">Linkedin</Link>
             </div>
         </Section>
+
+        <jet-modal :show="contacting" closeable="true" @close="contacting=null">
+<!--            <div
+                class="bg-green-400 shadow-2xl p-8 text-center font-bold"
+                v-if="$page.props.flash.contacted"
+            >
+                <p class="text-8xl m-5">👍</p>
+                <p class="text-5xl font-bold m-2">Thanks!</p>
+                <p class="text-xl m-2">I'll get back to you soon.</p>
+            </div>-->
+
+            <div class="bg-gray-50 shadow-2xl p-8" v-else>
+                <p class="text-gray-600 text-2xl font-extrabold text-center">Let me know some details</p>
+
+                <form
+                    class="flex flex-col items-center p-16"
+                    @submit.prevent="submit"
+                >
+                    <jet-input
+                        class="px-5 py-3 w-96 border border-gray-600 rounded"
+                        type="email"
+                        name="email"
+                        placeholder="Your email"
+                        v-model="form.email"
+                    ></jet-input>
+
+<!--                    <jet-input-error :message="form.errors.email"/>-->
+
+                    <textarea
+                        class="px-5 py-3 w-96 border border-gray-600 rounded mt-5"
+                        name="message"
+                        placeholder="The details :)"
+                        v-model="form.message"
+                    ></textarea>
+
+<!--                    <jet-input-error :message="form.errors.message"/>-->
+
+                    <jet-button
+                        class="px-5 py-3 mt-5 w-96 bg-purple-400 justify-center rounded-xl text-sm"
+                        :disabled="form.processing"
+                    >
+                    <span class="animate-spin mr-1" v-show="form.processing">
+                        &#9696;
+                    </span>
+
+                        <span v-show="!form.processing">
+                        Get in touch
+                    </span>
+                    </jet-button>
+                </form>
+            </div>
+        </jet-modal>
     </div>
 </template>
 
@@ -80,8 +138,10 @@ import {Head, Link} from '@inertiajs/inertia-vue3';
 
 import JetApplicationMark from '@/Jetstream/ApplicationMark';
 import JetButton from '@/Jetstream/Button';
-import Section from '@/Components/Section';
+import JetModal from '@/Jetstream/Modal';
+import JetInput from '@/Jetstream/Input';
 
+import Section from '@/Components/Section';
 import Skill from '@/Components/Skills';
 import Project from '@/Components/Project';
 
@@ -92,6 +152,8 @@ export default defineComponent({
         JetApplicationMark,
         Section,
         JetButton,
+        JetModal,
+        JetInput,
         Skill,
         Project
     },
@@ -112,6 +174,17 @@ export default defineComponent({
                 + 'Icon.js'
                     )
             );
+        }
+    },
+
+    data() {
+        return {
+            contacting: null,
+            form: {
+                email: null,
+                message: null,
+                processing: false
+            }
         }
     }
 })
