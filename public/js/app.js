@@ -23676,16 +23676,19 @@ __webpack_require__.r(__webpack_exports__);
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.defineAsyncComponent)(function () {
         return __webpack_require__("./node_modules/@heroicons/vue/solid lazy recursive ^\\.\\/.*Icon\\.js$")("./" + _this.projects[index].icon_name + "Icon.js");
       });
+    },
+    submit: function submit() {
+      this.form.post(route('contact'));
     }
   },
   data: function data() {
     return {
       contacting: null,
-      form: {
-        email: null,
-        message: null,
-        processing: false
-      }
+      form: this.$inertia.form({
+        'email': '',
+        'message': '',
+        'processing': false
+      })
     };
   }
 }));
@@ -28491,7 +28494,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <div\n                class=\"bg-green-400 shadow-2xl p-8 text-center font-bold\"\n                v-if=\"$page.props.flash.contacted\"\n            >\n                <p class=\"text-8xl m-5\">👍</p>\n                <p class=\"text-5xl font-bold m-2\">Thanks!</p>\n                <p class=\"text-xl m-2\">I'll get back to you soon.</p>\n            </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         "class": "flex flex-col items-center p-16",
         onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return _ctx.submit && _ctx.submit.apply(_ctx, arguments);

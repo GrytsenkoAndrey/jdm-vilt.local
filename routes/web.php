@@ -24,6 +24,8 @@ Route::get('/', function () {
     ]);
 });
 
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
