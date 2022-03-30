@@ -103,7 +103,7 @@
                         v-model="form.email"
                     ></jet-input>
 
-<!--                    <jet-input-error :message="form.errors.email"/>-->
+                    <jet-input-error :message="form.errors.email"/>
 
                     <textarea
                         class="px-5 py-3 w-96 border border-gray-600 rounded mt-5"
@@ -112,7 +112,7 @@
                         v-model="form.message"
                     ></textarea>
 
-<!--                    <jet-input-error :message="form.errors.message"/>-->
+                    <jet-input-error :message="form.errors.message"/>
 
                     <jet-button
                         class="px-5 py-3 mt-5 w-96 bg-purple-400 justify-center rounded-xl text-sm"
@@ -121,8 +121,7 @@
                     <span class="animate-spin mr-1" v-show="form.processing">
                         &#9696;
                     </span>
-
-                        <span v-show="!form.processing">
+                    <span v-show="!form.processing">
                         Get in touch
                     </span>
                     </jet-button>
@@ -140,6 +139,7 @@ import JetApplicationMark from '@/Jetstream/ApplicationMark';
 import JetButton from '@/Jetstream/Button';
 import JetModal from '@/Jetstream/Modal';
 import JetInput from '@/Jetstream/Input';
+import JetInputError from '@/Jetstream/InputError';
 
 import Section from '@/Components/Section';
 import Skill from '@/Components/Skills';
@@ -154,6 +154,7 @@ export default defineComponent({
         JetButton,
         JetModal,
         JetInput,
+        JetInputError,
         Skill,
         Project
     },
@@ -185,8 +186,7 @@ export default defineComponent({
             contacting: null,
             form: this.$inertia.form({
                 'email': '',
-                'message': '',
-                'processing': false
+                'message': ''
             }),
         }
     }
