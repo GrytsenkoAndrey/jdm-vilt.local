@@ -32,7 +32,9 @@
                     <p class="font-bold mr-5 text-gray-500 text-xl">Want to know more?</p>
                     <jet-button
                         @click="contacting=true"
-                        class="bg-green-400 rounded font-bold text-sm text-gray-800 hover:bg-green-800">Let's chat</jet-button>
+                        class="bg-green-400 rounded font-bold text-sm text-gray-800 hover:bg-green-800">
+                        {{ $page.props.flash.contacted ? 'Thanks!' : 'Lets chat' }}
+                    </jet-button>
                 </div>
             </div>
             <div class="animate-pulse mt-3 text-gray-300 text-center text-9xl">
@@ -51,7 +53,9 @@
             <div class="flex justify-center mt-10">
                 <jet-button
                     @click="contacting=true"
-                    class="bg-indigo-400 rounded font-bold text-sm text-gray-200 hover:bg-indigo-700">Get in touch</jet-button>
+                    class="bg-indigo-400 rounded font-bold text-sm text-gray-200 hover:bg-indigo-700">
+                    {{ $page.props.flash.contacted ? 'Thanks!' : 'Get in touch' }}
+                </jet-button>
             </div>
         </Section>
         <Section class="bg-gray-600 text-gray-200 h-screen">
@@ -66,7 +70,9 @@
             <div class="flex justify-center mt-10">
                 <jet-button
                     @click="contacting=true"
-                    class="bg-purple-100 rounded font-bold text-sm text-gray-800 hover:bg-purple-200">Know more</jet-button>
+                    class="bg-purple-100 rounded font-bold text-sm text-gray-800 hover:bg-purple-200">
+                    {{ $page.props.flash.contacted ? 'Thanks!' : 'Know more?'}}
+                </jet-button>
             </div>
         </Section>
         <Section class="flex justify-between bg-gray-800 text-gray-300 text-xl">
@@ -79,16 +85,16 @@
         </Section>
 
         <jet-modal :show="contacting" closeable="true" @close="contacting=null">
-<!--            <div
+            <div
                 class="bg-green-400 shadow-2xl p-8 text-center font-bold"
                 v-if="$page.props.flash.contacted"
             >
                 <p class="text-8xl m-5">👍</p>
                 <p class="text-5xl font-bold m-2">Thanks!</p>
                 <p class="text-xl m-2">I'll get back to you soon.</p>
-            </div>-->
+            </div>
 
-            <div class="bg-gray-50 shadow-2xl p-8">
+            <div class="bg-gray-50 shadow-2xl p-8" v-else>
                 <p class="text-gray-600 text-2xl font-extrabold text-center">Let me know some details</p>
 
                 <form
