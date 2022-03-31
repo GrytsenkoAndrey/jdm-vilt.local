@@ -29,7 +29,3 @@ Route::post('/contact', [App\Http\Controllers\ContactController::class, 'contact
 /*Route::get('/test', function () {
     return new \App\Mail\ContactedMessage('test@test.com', 'Just testing');
 });*/
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
