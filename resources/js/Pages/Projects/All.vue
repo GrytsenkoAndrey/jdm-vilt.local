@@ -19,13 +19,13 @@
                         font-bold
                         rounded-xl
                     "
-                    @click="acting = true"
+                    @click="acting=true;method='post';action=route('projects.store')"
                 >
                     Add New +
                 </jet-button>
 
                 <jet-modal :show="acting" closeable="true" @close="acting = null">
-                    <div class="bg-gray-50 shadow-2xl p-8" v-else>
+                    <div class="bg-gray-50 shadow-2xl p-8">
                         <form
                             class="flex flex-col items-center p-16"
                             @submit.prevent="submit"
@@ -133,6 +133,15 @@
                         </td>
                         <td class="px-6 py-4">
                             <jet-button
+                                @click="
+                                acting=true;
+                                method='put';
+                                action=route('projects.update', [project.id])
+                                form.title=project.title;
+                                form.description=project.description;
+                                form.color=project.color;
+                                form.icon_name=project.icon_name;
+                                "
                                 class="border border-indigo-500 text-indigo-500 bg-indigo-50 hover:bg-indigo-100 mr-2"
                             >
                                 Edit
@@ -187,7 +196,7 @@ export default {
         },
         submit()
         {
-            this.form.submit('post', route('projects.store') , {
+            this.form.submit(this.method, this.action , {
                 onSuccess: () => {
                     this.form.reset('title');
                     this.form.reset('description');
@@ -201,6 +210,8 @@ export default {
     data() {
         return {
             acting: null,
+            method: null,
+            action: null,
             form: this.$inertia.form({
                 'title': '',
                 'description': '',

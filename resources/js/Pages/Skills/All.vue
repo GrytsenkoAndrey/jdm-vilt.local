@@ -9,13 +9,13 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-right">
                 <jet-button
-                    @click="acting=true"
+                    @click="acting=true;method='post';action=route('skills.store')"
                     class="p-3 border border-blue-500 text-blue-500 bg-blue-100 hover:bg-blue-200 font-bold rounded-xl"
                 >
                     Add new +
                 </jet-button>
                 <jet-modal :show="acting" closeable="true" @close="acting = null">
-                    <div class="bg-gray-50 shadow-2xl p-8" v-else>
+                    <div class="bg-gray-50 shadow-2xl p-8">
                         <form
                             class="flex flex-col items-center p-16"
                             @submit.prevent="submit"
@@ -89,6 +89,13 @@
                         </td>
                         <td class="px-6 py-4">
                             <jet-button
+                                @click="
+                                acting=true;
+                                method='put';
+                                action=route('skills.update', [skill.id])
+                                form.name=skill.name;
+                                form.color=skill.color;
+                                "
                                 class="border border-indigo-500 text-indigo-500 bg-indigo-50 hover:bg-indigo-100 mr-2"
                             >
                                 Edit
@@ -132,7 +139,7 @@ export default {
     methods: {
         submit()
         {
-            this.form.submit('post', route('skills.store') , {
+            this.form.submit(this.method, this.action, {
                 onSuccess: () => {
                     this.form.reset('name');
                     this.form.reset('color');
@@ -144,6 +151,8 @@ export default {
     data() {
         return {
             acting: null,
+            method: null,
+            action: null,
             form: this.$inertia.form({
                 'name': '',
                 'color': '',
