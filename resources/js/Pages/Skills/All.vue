@@ -101,6 +101,7 @@
                                 Edit
                             </jet-button>
                             <jet-button
+                                @click="action=route('skills.destroy', [skill.id]);method='delete';submit()"
                                 class="border border-red-500 text-red-500 bg-red-50 hover:bg-red-100 ml-2"
                             >
                                 Delete
